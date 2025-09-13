@@ -28,6 +28,19 @@ body {
     padding: 0 20px;
 }
 
+/* Responsive container padding */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 10px;
+    }
+}
+
 a {
     color: var(--primary-color);
     text-decoration: none;
@@ -44,9 +57,9 @@ h1, h2, h3, h4 {
     font-weight: 600;
 }
 
-h1 { font-size: 2.75rem; }
-h2 { font-size: 2.25rem; text-align: center; margin-bottom: 2.5rem; }
-h3 { font-size: 1.5rem; }
+h1 { font-size: clamp(2rem, 4vw, 2.75rem); }
+h2 { font-size: clamp(1.75rem, 3.5vw, 2.25rem); text-align: center; margin-bottom: 2.5rem; }
+h3 { font-size: clamp(1.25rem, 2.5vw, 1.5rem); }
 p { margin-bottom: 1rem; color: #4b5563; }
 em { font-style: italic; }
 
@@ -56,6 +69,14 @@ em { font-style: italic; }
     gap: 1rem;
     justify-content: center;
     flex-wrap: wrap;
+}
+
+@media (max-width: 480px) {
+    .button-group {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.75rem;
+    }
 }
 
 .btn {
@@ -69,6 +90,16 @@ em { font-style: italic; }
     cursor: pointer;
     background: none;
     font-family: inherit;
+    font-size: clamp(0.9rem, 2vw, 1rem);
+}
+
+@media (max-width: 480px) {
+    .btn {
+        padding: 0.7rem 1.5rem;
+        width: 100%;
+        max-width: 280px;
+        text-align: center;
+    }
 }
 
 .btn:hover {
@@ -94,16 +125,53 @@ em { font-style: italic; }
     padding: 4rem 0;
 }
 
+@media (max-width: 768px) {
+    .features-section {
+        padding: 3rem 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .features-section {
+        padding: 2rem 0;
+    }
+}
+
 .features-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
 }
 
+@media (max-width: 768px) {
+    .features-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .features-grid {
+        gap: 1rem;
+    }
+}
+
 .feature-card {
     background-color: var(--secondary-color);
     padding: 2rem;
     border-radius: 12px;
+}
+
+@media (max-width: 768px) {
+    .feature-card {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .feature-card {
+        padding: 1.25rem;
+    }
 }
 
 .feature-card h3 {
@@ -114,6 +182,18 @@ em { font-style: italic; }
 .testimonials {
     background-color: var(--secondary-color);
     padding: 4rem 0;
+}
+
+@media (max-width: 768px) {
+    .testimonials {
+        padding: 3rem 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .testimonials {
+        padding: 2rem 0;
+    }
 }
 
 .testimonials .container {
@@ -132,6 +212,25 @@ em { font-style: italic; }
     padding-left: 1.5rem;
 }
 
+@media (max-width: 768px) {
+    .testimonials blockquote {
+        font-size: 1.1rem;
+        padding-left: 1rem;
+        border-left-width: 3px;
+    }
+}
+
+@media (max-width: 480px) {
+    .testimonials blockquote {
+        font-size: 1rem;
+        padding-left: 0.75rem;
+        border-left: none;
+        border-top: 3px solid var(--primary-color);
+        padding-top: 1rem;
+        padding-left: 0;
+    }
+}
+
 .testimonials .attribution {
     margin-top: 0.5rem;
     font-style: normal;
@@ -147,6 +246,20 @@ em { font-style: italic; }
     max-width: 800px;
 }
 
+@media (max-width: 768px) {
+    .content-page {
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .content-page {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+}
+
 .content-page h1 {
     text-align: center;
 }
@@ -155,6 +268,12 @@ em { font-style: italic; }
     text-align: left;
     border-bottom: none;
     font-size: 1.75rem;
+}
+
+@media (max-width: 480px) {
+    .content-page h2 {
+        font-size: 1.5rem;
+    }
 }
 
 .content-page hr {
@@ -177,6 +296,13 @@ em { font-style: italic; }
     font-size: 1.1rem;
 }
 
+@media (max-width: 480px) {
+    .how-it-works li {
+        padding-left: 2.5rem;
+        font-size: 1rem;
+    }
+}
+
 .how-it-works li::before {
     content: counter(how-it-works-counter);
     position: absolute;
@@ -191,4 +317,12 @@ em { font-style: italic; }
     align-items: center;
     justify-content: center;
     font-weight: 600;
+}
+
+@media (max-width: 480px) {
+    .how-it-works li::before {
+        width: 1.75rem;
+        height: 1.75rem;
+        font-size: 0.875rem;
+    }
 }

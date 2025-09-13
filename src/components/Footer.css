@@ -6,9 +6,29 @@ footer {
     color: #a0aec0;
 }
 
+@media (max-width: 768px) {
+    footer {
+        padding: 2.5rem 0;
+    }
+}
+
+@media (max-width: 480px) {
+    footer {
+        padding: 2rem 0;
+    }
+}
+
 footer p {
     color: inherit;
-    font-size: 1.1rem;
+    font-size: clamp(1rem, 2.5vw, 1.1rem);
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    footer p {
+        margin-bottom: 0.75rem;
+    }
 }
 
 footer strong {
