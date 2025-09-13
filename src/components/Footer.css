@@ -1,0 +1,20 @@
+/* Footer styles - converted from original style.css */
+footer {
+    text-align: center;
+    padding: 3rem 0;
+    background-color: var(--text-color);
+    color: #a0aec0;
+}
+
+footer p {
+    color: inherit;
+    font-size: 1.1rem;
+}
+
+footer strong {
+    color: white;
+}
+
+footer em {
+    color: #718096;
+}

@@ -1,0 +1,68 @@
+/* Header styles - converted from original style.css */
+header {
+    background-color: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-color);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--text-color);
+    letter-spacing: 1px;
+}
+
+.logo:hover { 
+    text-decoration: none; 
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+nav a {
+    font-weight: 600;
+    padding: 0.5rem 0;
+    color: #4b5563;
+}
+
+nav a:hover { 
+    text-decoration: none; 
+    color: var(--primary-color); 
+}
+
+nav a.active {
+    color: var(--primary-color);
+}
+
+nav a.cad-link {
+    background-color: var(--text-color);
+    color: var(--background-color);
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+nav a.cad-link:hover {
+    background-color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+nav a.cad-link.active {
+    background-color: var(--primary-color);
+    color: var(--background-color);
+}
