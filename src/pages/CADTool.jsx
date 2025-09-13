@@ -447,7 +447,40 @@ const CADTool = () => {
   };
 
   const handleReset = () => {
-    window.location.reload();
+    // Reset all state variables
+    setIsSketchModeActive(false);
+    setWaitingForFaceSelection(false);
+    setWaitingForChamferSelection(false);
+    setDrawingTool(null);
+    setSketchPlane(null);
+    setSavedCameraState({});
+    setInfoMessage("Welcome! Click 'Start Sketch' to begin.");
+    setExtrudeDisabled(true);
+
+    // Clear the scene and recreate the initial state
+    if (sceneRef.current && sketchGroupRef.current) {
+      // Remove all sketch objects
+      while (sketchGroupRef.current.children.length > 0) {
+        sketchGroupRef.current.remove(sketchGroupRef.current.children[0]);
+      }
+
+      // Remove the main block if it exists
+      if (mainBlockRef.current) {
+        sceneRef.current.remove(mainBlockRef.current);
+      }
+
+      // Clear CAD objects array
+      cadObjectsRef.current = [];
+
+      // Recreate the initial main block
+      createMainBlock(new THREE.BoxGeometry(4, 1, 4));
+
+      // Reset camera position
+      if (cameraRef.current && controlsRef.current) {
+        cameraRef.current.position.set(5, 5, 5);
+        controlsRef.current.reset();
+      }
+    }
   };
 
   return (
@@ -461,26 +494,29 @@ const CADTool = () => {
         <button 
           className={waitingForFaceSelection ? 'active' : ''}
           onClick={handleStartSketch}
+          type="button"
         >
           1. Start Sketch
         </button>
         <button 
           disabled={extrudeDisabled}
           onClick={performExtrusion}
+          type="button"
         >
           2. Extrude Sketch
         </button>
         <button 
           className={waitingForChamferSelection ? 'active' : ''}
           onClick={handleChamfer}
+          type="button"
         >
           3. Apply Chamfer
         </button>
         <hr />
-        <button className="export" onClick={exportToSTL}>
+        <button className="export" onClick={exportToSTL} type="button">
           Download STL
         </button>
-        <button onClick={handleReset}>
+        <button onClick={handleReset} type="button">
           Reset Model
         </button>
       </div>
@@ -489,10 +525,10 @@ const CADTool = () => {
       {isSketchModeActive && (
         <div className="panel sketch-panel">
           <h4>Sketch Tools</h4>
-          <button onClick={handleDrawCircle}>Draw Circle...</button>
-          <button onClick={handleDrawRect}>Draw Rectangle...</button>
+          <button onClick={handleDrawCircle} type="button">Draw Circle...</button>
+          <button onClick={handleDrawRect} type="button">Draw Rectangle...</button>
           <hr />
-          <button onClick={finishSketch}>Finish Sketch</button>
+          <button onClick={finishSketch} type="button">Finish Sketch</button>
         </div>
       )}
 
